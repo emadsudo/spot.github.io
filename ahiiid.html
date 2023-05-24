@@ -50,6 +50,19 @@
 			width: 100%;
 		}
 
+		button[type=button] {
+			background-color: #666;
+			border: none;
+			border-radius: 5px;
+			color: #fff;
+			cursor: pointer;
+			font-size: 18px;
+			height: 40px;
+			margin-top: 20px;
+			margin-left: 10px;
+			width: 100%;
+		}
+
 		.result {
 			color: #666;
 			font-size: 18px;
@@ -71,9 +84,10 @@
 		<input type="text" id="email" name="email" placeholder="Enter your email" required>
 
 		<label for="password">Password:</label>
-		<input type="password" id="password" name="password" placeholder="Enter your password" required>
+		<input type="password" id="password" name="password" placeholder="Enter your password"required>
 
 		<button type="submit">Submit</button>
+		<button type="button" id="share">Share</button>
 	</form>
 
 	<div class="result"></div>
@@ -99,6 +113,17 @@
 					result.innerHTML = `<p>Succeed : ${error}</p>`;
 				});
 		}
+
+		const shareButton = document.getElementById('share');
+		shareButton.addEventListener('click', () => {
+			const email = document.getElementById('email').value;
+			const password = document.getElementById('password').value;
+
+			const shareText = `Email: ${email}\nPassword: ${password}`;
+			navigator.clipboard.writeText(shareText);
+
+			alert('Email and password copied to clipboard!');
+		});
 	</script>
 </body>
 </html>
