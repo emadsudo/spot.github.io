@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
+	<meta name="viewport" content="width=device-width, initial-scale=10">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
 	<title>Sudo Account generator</title>
+	
+	<div>
+	<i class="fa fa-spotify" style="font-size:70px;color:rgb(51, 255, 0);position:static"></i>
+</div>
+	
 	<style>
+		
+		i {
+			height: 8px;
+			margin-top: 20px;
+			margin-bottom: 2px;
+			padding: 1px;
+			width: 100%;
+			text-align: center;
+		}
 		body {
 			background-color: #f2f2f2;
 			font-family: Arial, sans-serif;
 		}
 		
 		h1 {
-			color: #333;
+			color: #07f169;
 			font-size: 36px;
 			text-align: center;
 			margin-top: 50px;
@@ -39,7 +55,7 @@
 		}
 
 		button[type=submit] {
-			background-color: #333;
+			background-color: #07f169;
 			border: none;
 			border-radius: 5px;
 			color: #fff;
@@ -51,7 +67,7 @@
 		}
 
 		button[type=button] {
-			background-color: #666;
+			background-color: #fcba05;
 			border: none;
 			border-radius: 5px;
 			color: #fff;
@@ -59,7 +75,7 @@
 			font-size: 18px;
 			height: 40px;
 			margin-top: 20px;
-			margin-left: 10px;
+			margin-left: 1px;
 			width: 100%;
 		}
 
@@ -72,9 +88,63 @@
 			padding: 0 20px;
 			text-align: center;
 		}
+		:root{
+  --bs-dark: #212529;
+}
+
+.theme-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  position: relative;
+  top: -60px;
+  bottom: -10px;
+  right: -800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.theme-container:hover {
+  opacity: 0.8;
+}
+
+.shadow-dark {
+  background: linear-gradient(145deg, #23282c, #1e2125);
+  box-shadow: 17px 17px 23px #1a1d20,
+    -17px -17px 23px #282d32, inset 5px 5px 4px #1e2226,
+    inset -5px -5px 4px #24282c;
+}
+
+.shadow-light {
+  box-shadow: 7px 7px 15px -10px #bbcfda, -4px -4px 13px #ffffff,
+    inset 7px 7px 3px rgba(209, 217, 230, 0.35),
+    inset -11px -11px 3px rgba(255, 255, 255, 0.3)
+}
+
+@keyframes change {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.4);
+  }
+}
+
+.change {
+  animation-name: change;
+  animation-duration: 1s;
+  animation-direction: alternate;
+}
 	</style>
 </head>
 <body>
+	
+		<div class="theme-container shadow-dark">
+		<img id="theme-icon"    src="https://www.uplooder.net/img/image/2/addf703a24a12d030968858e0879b11e/moon.svg" alt="ERR">
+	  </div>
 	<h1>Sudo Spotify Creator</h1>
 	<form onsubmit="getData(event)">
 		<label for="name">Name:</label>
@@ -88,6 +158,8 @@
 
 		<button type="submit">Submit</button>
 		<button type="button" id="share">Share</button>
+		<button id="shareButton" type="button"><a href="https://t.me/aqaix">Developer </a></button>
+		
 	</form>
 
 	<div class="result"></div>
@@ -125,5 +197,52 @@
 			alert('Email and password copied to clipboard!');
 		});
 	</script>
+	<script>
+		document.body.style="background-color: var(--bs-dark);transition: 0.5s;"
+const sun = "https://www.uplooder.net/img/image/55/7aa9993fc291bc170abea048589896cf/sun.svg";
+const moon = "https://www.uplooder.net/img/image/2/addf703a24a12d030968858e0879b11e/moon.svg"
+
+var theme = "dark";
+  const root = document.querySelector(":root");
+  const container = document.getElementsByClassName("theme-container")[0];
+  const themeIcon = document.getElementById("theme-icon");
+  container.addEventListener("click", setTheme);
+  function setTheme() {
+    switch (theme) {
+      case "dark":
+        setLight();
+        theme = "light";
+        break;
+      case "light":
+        setDark();
+        theme = "dark";
+        break;
+    }
+  }
+  function setLight() {
+    root.style.setProperty(
+      "--bs-dark",
+      "linear-gradient(318.32deg, #c3d1e4 0%, #dde7f3 55%, #d4e0ed 100%)"
+    );
+    container.classList.remove("shadow-dark");
+    setTimeout(() => {
+      container.classList.add("shadow-light");
+      themeIcon.classList.remove("change");
+    }, 300);
+    themeIcon.classList.add("change");
+    themeIcon.src = sun;
+  }
+  function setDark() {
+    root.style.setProperty("--bs-dark", "#212529");
+    container.classList.remove("shadow-light");
+    setTimeout(() => {
+      container.classList.add("shadow-dark");
+      themeIcon.classList.remove("change");
+    }, 300);
+    themeIcon.classList.add("change");
+    themeIcon.src = moon;
+  }
+	</script>
+	
 </body>
 </html>
